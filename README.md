@@ -1,2 +1,2 @@
 # generic-blog-api
-A generic library to read blog feed data.
+A generic API to read blog feed data.
