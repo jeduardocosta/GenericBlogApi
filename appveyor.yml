@@ -11,12 +11,12 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: lc0Tx+lbuPxAXOpLnsNNWbudS5FmoPzzNaVwq3sz1kwQsgj9+YmK/gfMTxcKQYXk
 before_build:
-  - nuget restore ".\Generic.BlogAPI.sln"
+  - nuget restore ".\GenericBlogAPI.sln"
 build:
-  project: .\Generic.BlogAPI.sln
+  project: .\GenericBlogAPI.sln
   verbosity: minimal
 test_script:
 - ps: >-
-    .\packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -target:nunit-console.exe -register:user "-targetargs:""test\Generic.BlogAPI.Core.Tests\bin\$env:CONFIGURATION\Generic.BlogAPI.Core.Tests.dll" "test\Generic.BlogAPI.Tests\bin\$env:CONFIGURATION\Generic.BlogAPI.Tests.dll"" /noshadow" -filter:"+[Generic.BlogAPI*]*" -output:opencoverCoverage.xml
+    .\packages\OpenCover.4.5.3723\OpenCover.Console.exe -register:user -target:nunit-console.exe -register:user "-targetargs:""test\GenericBlogAPI.Core.Tests\bin\$env:CONFIGURATION\GenericBlogAPI.Core.Tests.dll" "test\GenericBlogAPI.Tests\bin\$env:CONFIGURATION\GenericBlogAPI.Tests.dll"" /noshadow" -filter:"+[GenericBlogAPI*]*" -output:opencoverCoverage.xml
 
     .\packages\coveralls.net.0.5.0\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
